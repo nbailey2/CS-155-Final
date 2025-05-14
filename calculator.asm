@@ -70,7 +70,10 @@ SkipCheck
     ADD R6, R6, #-1
     Br LOOP
 AdditionJmp
+    ADD R4, R4, #0
+    BRp SkipDisplay
     TRAP x21
+SkipDisplay
     ADD R6, R6, #0 ;store enter char in stack
     AND R0, R0, #0
     ADD R0, R0, #10
@@ -79,7 +82,10 @@ AdditionJmp
     JSR Addition
     Br Display
 SubtractionJmp
+    ADD R4, R4, #0
+    BRp SkipDisplay2
     TRAP x21
+SkipDisplay2
     ADD R6, R6, #0
     AND R0, R0, #0
     ADD R0, R0, #10
