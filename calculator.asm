@@ -104,6 +104,11 @@ MultiplicationJmp
     Br Display
 Display
     LD R6, STACK
+    LDR R0, R6, #0
+    ADD R1, R0, #-10
+    BRz SkipFirst
+    Trap x21
+SkipFirst
     ADD R6, R6, #-1
     AND R0, R0, #0
     ADD R0, R0, #10
@@ -214,6 +219,13 @@ Store
     ADD R5, R5, #1
     BR AddInputsLoop
 AddDone
+    ADD R7, R7, #0
+    BRz Skip
+    AND R0, R0, #0
+    ADD R0, R0, R7
+    STR R0, R6, #0
+    ADD R6, R6, #1
+Skip
     ADD R6, R6, #1
     LDR R0, R6, #0
     ADD R0, R0, #0
